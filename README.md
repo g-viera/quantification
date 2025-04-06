@@ -1,2 +1,2 @@
-# quantification
+# Quantification
 A mathematics blog.
