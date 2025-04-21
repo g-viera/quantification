@@ -1,27 +1,18 @@
-import About from "@app/ui/about";
-import TopicPreview from "@app/ui/topic-preview";
-import { site, topics } from "@app/lib/data";
+import PageTitle from "@app/ui/page-title";
+import SiteAbout from "@app/ui/site-about";
+import TopicPreviews from "@app/ui/topic-previews";
+import { getSite, getTopics } from "@app/lib/data";
 
 export default async function Page() {
-  const listItems = [];
-  for (const topic of topics) {
-    const articles = topic.articleSegs;
-    listItems.push(
-      <li key={topic.topicSeg}>
-        <TopicPreview
-          title={topic.title}
-          text={topic.preview}
-          articles={articles.length}
-        />
-      </li>
-    );
-  }
+
+  const site = await getSite();
+  const topics = await getTopics();
+
   return (
     <main>
-      <About content={site.about} />
-      <div>
-        <ul>{listItems}</ul>
-      </div>
+      <PageTitle titleMarkdown={site.name} />
+      <SiteAbout aboutMarkdown={site.about}/>
+      <TopicPreviews topics={topics} />
     </main>
   );
 }

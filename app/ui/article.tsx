@@ -4,22 +4,21 @@ import rehypeSanitize from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
 
-export default async function TopicPreview({ topic }) {
+export default async function Article({ article }) {
 
   const file = await unified()
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeStringify)
-    .process(topic.aboutMarkdown);
-
-  const numberOfarticles = topic.articleSegs.length;
+    .process(article.prose);
 
   return (
     <div>
-      <h2>{topic.title}</h2>
+      <h1>article.title</h1>
+      <p>article.date</p>
+      <p>article.author</p>
       <div dangerouslySetInnerHTML={{ __html: file.value }}></div>
-      <p>{`${numberOfarticles} articles`}</p>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { oswald } from "@ui/fonts";
+import { oswald } from "@app/ui/fonts";
+import Article from "@app/ui/article";
 import { getArticleSegs, getArticle } from "@app/lib/data";
 
 export async function generateStaticParams() {
@@ -21,9 +22,10 @@ export default async function Page({
   }
   return (
     <main>
+      <article>
       <h1 className={`${oswald.className} antialiased text-3xl font-medium`}>{article.title}</h1>
-      <p>{article.preview}</p>
-      <div>{article.content}</div>
+      <Article article={article} />
+      </article>
     </main>
   );
 }

@@ -4,22 +4,20 @@ import rehypeSanitize from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
 
-export default async function TopicPreview({ topic }) {
+export default async function PageTitle({ titleMarkdown }) {
+
+
+  // Add options to only allow <em>, <strong> html tags in title.
+  // if necessary strip <p> tag.
 
   const file = await unified()
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeStringify)
-    .process(topic.aboutMarkdown);
-
-  const numberOfarticles = topic.articleSegs.length;
+    .process(titleMarkdown);
 
   return (
-    <div>
-      <h2>{topic.title}</h2>
-      <div dangerouslySetInnerHTML={{ __html: file.value }}></div>
-      <p>{`${numberOfarticles} articles`}</p>
-    </div>
+    <h1 dangerouslySetInnerHTML={{ __html: file.value }}></h1>
   );
 }
