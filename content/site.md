@@ -1,5 +1,6 @@
 ---
 name: Quantification
+title: Quantification Blog
 owner: Gabriel Viera
 topicSegs: [
     { topicSeg: logic },

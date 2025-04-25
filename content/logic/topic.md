@@ -1,5 +1,5 @@
 ---
-title: Propositional *Logic*
+title: Propositional Logic
 preview:
   This is the **preview** text *written* in 
   markdown.

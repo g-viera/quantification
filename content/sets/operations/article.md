@@ -2,7 +2,8 @@
 title: Set Operations
 date: 7 May 2025
 author: Gabriel Viera
-preview: "An article about set operations"
+preview: 
+    An article about set operations
 ---
 
 ## Overview

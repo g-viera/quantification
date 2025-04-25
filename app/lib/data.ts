@@ -14,6 +14,7 @@ const content = path.join(process.env.QUANT, "content");
 /** Site metadata. */
 export interface Site {
   name: string,
+  title: string,
   owner: string,
   about: string,
   topicSegs: { topicSeg: string }[],
@@ -57,6 +58,7 @@ export async function getSite(): Promise<Site> {
 
   return {
     name: file.data.name as string,
+    title: file.data.title as string,
     owner: file.data.owner as string,
     topicSegs: file.data.topicSegs as { topicSeg: string }[],
     about: file.value as string,
@@ -104,7 +106,6 @@ export async function getTopic(topicSeg: string): Promise<Topic> {
     .use(extractFrontmatter, { yaml: yaml.parse, remove: true })
     .use(remarkStringify)
     .process(fs.readFileSync(topicPath, "utf-8"));
-  const data = file.data;
 
   return {
     topicSeg: topicSeg,

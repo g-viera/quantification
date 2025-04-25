@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { oswald } from "@app/ui/fonts";
 import Article from "@app/ui/article";
 import { getArticleSegs, getArticle } from "@app/lib/data";
 
@@ -20,12 +19,10 @@ export default async function Page({
   if (!article) {
     notFound();
   }
+
   return (
     <main>
-      <article>
-      <h1 className={`${oswald.className} antialiased text-3xl font-medium`}>{article.title}</h1>
       <Article article={article} />
-      </article>
     </main>
   );
 }

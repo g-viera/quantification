@@ -14,6 +14,6 @@ export default async function SiteAbout({ aboutMarkdown }) {
     .process(aboutMarkdown);
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: file.value }}></div>
+    <div className="mb-8"  dangerouslySetInnerHTML={{ __html: file.value }}></div>
   );
 }

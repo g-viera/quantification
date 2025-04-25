@@ -1,6 +1,7 @@
 ---
 title: Elementary Set Theory
-preview: Preview text.
+preview: 
+    Preview text.
 articleSegs: [
     { articleSeg: operations},
     { articleSeg: power}

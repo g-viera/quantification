@@ -1,8 +1,9 @@
 ---
-title: Logical *Identities*
+title: Logical Identities
 date: 12 April 2025
 author: Gabriel Viera
-preview: "An article **about** logical *identities*."
+preview: 
+    An article **about** logical *identities*.
 ---
 
 ## About logical identities

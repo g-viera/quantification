@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { inter } from '@app/ui/fonts';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeSanitize from 'rehype-sanitize';
@@ -6,20 +8,26 @@ import { unified } from 'unified';
 
 export default async function TopicPreview({ topic }) {
 
-  const file = await unified()
+  const aboutFile = await unified()
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeStringify)
-    .process(topic.aboutMarkdown);
+    .process(topic.about);
 
   const numberOfarticles = topic.articleSegs.length;
 
   return (
     <div>
-      <h2>{topic.title}</h2>
-      <div dangerouslySetInnerHTML={{ __html: file.value }}></div>
-      <p>{`${numberOfarticles} articles`}</p>
+      <Link href={`/${topic.topicSeg}`}>
+        <h2 className={`${inter.className} antialiased text-lg font-semibold`}>
+          {topic.title}
+        </h2>
+        <div dangerouslySetInnerHTML={{ __html: aboutFile.value }}></div>
+        <p>
+          {`${numberOfarticles} articles`}
+        </p>
+      </Link>
     </div>
   );
 }

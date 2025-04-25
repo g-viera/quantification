@@ -1,23 +1,9 @@
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeSanitize from 'rehype-sanitize';
-import rehypeStringify from 'rehype-stringify';
-import { unified } from 'unified';
+import { inter } from "@app/ui/fonts";
 
-export default async function PageTitle({ titleMarkdown }) {
-
-
-  // Add options to only allow <em>, <strong> html tags in title.
-  // if necessary strip <p> tag.
-
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process(titleMarkdown);
-
+export default async function PageTitle({ title }) {
   return (
-    <h1 dangerouslySetInnerHTML={{ __html: file.value }}></h1>
+    <h1 className={`${inter.className} antialiased text-2xl font-bold text-center mb-8`}>
+      {title}
+    </h1>
   );
 }

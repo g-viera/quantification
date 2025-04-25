@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import ArticlePreview from "@app/ui/article-preview";
+import PageTitle from "@app/ui/page-title";
+import TopicAbout from "@app/ui/topic-about";
+import ArticlePreviews from "@app/ui/article-previews";
 import { getSite, getTopic, getArticle } from "@lib/data";
-import { oswald } from "@ui/fonts"
 
 export async function generateStaticParams() {
   return (await getSite()).topicSegs;
@@ -13,8 +14,6 @@ export default async function Page({
   params: Promise<{ topicSeg: string }>
 }) {
 
-  // Get topic information to build the topic page
-  // corresponding to the passed slag parameter.
   const { topicSeg } = await params;
   const topic = await getTopic(topicSeg);
   if (!topic) {
@@ -22,20 +21,17 @@ export default async function Page({
   }
 
   // Get article previews for this topic.
-  const articlePreviews = [];
+  const articles = [];
   for (const { articleSeg } of topic.articleSegs) {
     const article = await getArticle(topicSeg, articleSeg);
-    articlePreviews.push(
-    <div key={articleSeg}>
-      <ArticlePreview article={article} />
-    </div>);
+    articles.push(article);
   }
 
   return (
     <main>
-      <h1 className={`${oswald.className} antialiased text-3xl font-medium`}>{topic.title}</h1>
-      <p>{topic.preview}</p>
-      <div>{articlePreviews}</div>
+      <PageTitle title={topic.title} />
+      <TopicAbout aboutMarkdown={topic.about} />
+      <ArticlePreviews articles={articles} />
     </main>
   );
 }

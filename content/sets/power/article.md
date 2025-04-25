@@ -2,7 +2,8 @@
 title: Power Sets
 date: 2 January 2025
 author: Gabriel Viera
-preview: "An article about power sets."
+preview: 
+    An article about power sets.
 ---
 
 ## Introduction
