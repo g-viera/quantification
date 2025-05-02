@@ -7,7 +7,13 @@ preview:
 ---
 
 ## About logical identities
-Some content.
+
+Some content. Let $A$ be a set, 
+
+$$
+A \cup B = \{ x: x < 0 \}
+$$
 
 ## Definition of logical identities
+
 Some content.

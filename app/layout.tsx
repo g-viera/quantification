@@ -1,5 +1,5 @@
-import '@app/ui/globals.css'
-import { open_sans } from '@app/ui/fonts'
+import '@app/globals.css';
+import { open_sans } from '@app/ui/fonts';
 import Header from "@app/ui/header";
 import Footer from "@app/ui/footer";
 import { getSite } from "@app/lib/data";

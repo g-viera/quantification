@@ -1,3 +1,6 @@
+import { read } from 'to-vfile';
+import { VFileData, VFileValue } from 'vfile';
+import { reporter } from 'vfile-reporter';
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -6,6 +9,12 @@ import remarkParse from 'remark-parse';
 import remarkFrontmatter from "remark-frontmatter";
 import extractFrontmatter from "remark-extract-frontmatter";
 import remarkStringify from "remark-stringify";
+import remarkToc from "remark-toc";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeMathJax from "rehype-mathjax/svg";
+import rehypeStringify from 'rehype-stringify';
+import rehypeSlug from "rehype-slug";
 import { unified } from 'unified';
 
 // Path to content store.
@@ -37,7 +46,7 @@ export interface Article {
   date: string,
   author: string,
   preview: string,
-  prose: string,
+  value: VFileValue,
 };
 
 /**
@@ -66,7 +75,7 @@ export async function getSite(): Promise<Site> {
 }
 
 /**
- * Returns list objects with topic metadata and
+ * Returns list of objects with topic metadata and
  * 'about topic' content in markdown format.
  */
 export async function getTopics(): Promise<Topic[]> {
@@ -116,24 +125,47 @@ export async function getTopic(topicSeg: string): Promise<Topic> {
   };
 }
 
-export async function getArticle(topicSeg: string, articleSeg: string): Promise<Article> {
-  
+export async function getArticle(
+  topicSeg: string,
+  articleSeg: string
+): Promise<Article> {
+
   const articlePath = path.join(content, topicSeg, articleSeg, "article.md");
-  const file = await unified()
+  const file = await read(articlePath);
+
+  // Spellcheck
+
+  await unified()
     .use(remarkParse)
+    // .use(remarkRetext, unified().use(retextEnglish).use(retextSpell, {
+    //   dictionary: dictionaryEn,
+    //   ignore: ['MathJax']
+    // }).use(retextIndefiniteArticle))
     .use(remarkFrontmatter)
     .use(extractFrontmatter, { yaml: yaml.parse, remove: true })
-    .use(remarkStringify)
-    .process(fs.readFileSync(articlePath, "utf-8"));
-  
+    .use(remarkToc)
+    .use(remarkMath)
+    .use(remarkRehype)
+    .use(rehypeMathJax)
+    .use(rehypeSlug)
+    .use(rehypeStringify).process(file)
+
+  // console.log(String(file))
+
+  console.error(reporter(file))
+  // file.extname = '.html'
+  // await write(file)
+
+  const data: VFileData = file.data;
+
   return {
     topicSeg: topicSeg,
     articleSeg: articleSeg,
-    title: file.data.title as string,
-    date: file.data.date as string,
-    author: file.data.author as string,
-    preview: file.data.preview as string,
-    prose: file.value as string,
+    title: data.title as string,
+    date: data.date as string,
+    author: data.author as string,
+    preview: data.preview as string,
+    value: file.value,
   };
 }
 

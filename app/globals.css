@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Tailwind CSS preflight style sheet sets
+svg display mode to block. The html default is
+inline-block. MathJax does not explicitly set 
+the display mode of svg elements. The result is
+we need to do it here so that line math renders 
+as inline block. */
+.MathJax svg {
+  display: inline-block;
+}

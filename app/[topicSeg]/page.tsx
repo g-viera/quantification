@@ -5,6 +5,7 @@ import ArticlePreviews from "@app/ui/article-previews";
 import { getSite, getTopic, getArticle } from "@lib/data";
 
 export async function generateStaticParams() {
+  // Returns a list of objects of the form {topicSeg: topicSeg}.
   return (await getSite()).topicSegs;
 }
 
@@ -20,13 +21,14 @@ export default async function Page({
     notFound();
   }
 
-  // Get article previews for this topic.
+  // Get article preview data for this topic.
   const articles = [];
   for (const { articleSeg } of topic.articleSegs) {
     const article = await getArticle(topicSeg, articleSeg);
     articles.push(article);
   }
 
+  // Return html for this particular topic.
   return (
     <main>
       <PageTitle title={topic.title} />
