@@ -1,12 +1,7 @@
 ---
-title: Propositional Logic
-preview:
-  This is the **preview** text *written* in 
-  markdown.
-articleSegs: [
-    { articleSeg: propositions},
-    { articleSeg: identities}
-]
+title: Logic
+preview: Topic preview.
+articleIds: [{ articleId: propositions }, { articleId: identities }]
 ---
 
-Description of **logic** *topic* written in markdown.
+Topic introduction.

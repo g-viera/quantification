@@ -1,24 +1,21 @@
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeSanitize from 'rehype-sanitize';
-import rehypeStringify from 'rehype-stringify';
-import { unified } from 'unified';
+import Link from "next/link";
+import { inter } from "@app/ui/fonts";
 
 export default async function ArticlePreview({ article }) {
-
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process(article.preview);
-
   return (
-    <div>
-      <h2>{article.title}</h2>
-      <p>{article.date}</p>
-      <p>{article.author}</p>
-      <div dangerouslySetInnerHTML={{ __html: file.value }}></div>
+    <div className="mb-8">
+      <Link
+        href={`/${article.topicId}/${article.articleId}`}
+        title={`Open '${article.title}' article.`}
+      >
+        <h2 className={`${inter.className} antialiased text-lg font-semibold`}>
+          {article.title}
+        </h2>
+      </Link>
+      <div>
+        <span className="text-gray-400 text-sm">{`${article.date}, ${article.author}`}</span>
+      </div>
+      <div dangerouslySetInnerHTML={{ __html: article.previewHtml }}></div>
     </div>
   );
 }

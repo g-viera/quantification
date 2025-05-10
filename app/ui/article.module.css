@@ -1,0 +1,19 @@
+.articles h2 {
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.articles h3 {
+  font-size: larger;
+  font-weight: 500;
+}
+
+.articles h4, .articles h5, .articles h6 {
+  font-size: large;
+  font-weight: 600;
+}
+
+.articles h2, .articles h3, .articles h4, .articles h5, .articles h6 {
+  margin: 0.8rem 0 0.2rem 0;
+  font-family: Inter;
+}

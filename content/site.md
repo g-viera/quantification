@@ -1,11 +1,9 @@
 ---
 name: Quantification
-title: Quantification Blog
-owner: Gabriel Viera
-topicSegs: [
-    { topicSeg: logic },
-    { topicSeg: sets },
-  ] 
+phrase: The poerty of numbers...
+title: Quantification
+copyright: { owner: Gabriel Viera, from: "2024" }
+topicIds: [{ topicId: logic }, { topicId: sets }]
 ---
 
-About this site. **Bold text**, *emphasized text*.
+Introduction to _quantification_ site.

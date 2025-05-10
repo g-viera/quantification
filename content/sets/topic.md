@@ -1,11 +1,7 @@
 ---
-title: Elementary Set Theory
-preview: 
-    Preview text.
-articleSegs: [
-    { articleSeg: operations},
-    { articleSeg: power}
-]
+title: Sets
+preview: Topic preview.
+articleIds: [{ articleId: operations }, { articleId: power }]
 ---
 
-Description of sets topic.
+Topic introduction.

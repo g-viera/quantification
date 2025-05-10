@@ -2,12 +2,23 @@
 title: Propositions
 date: 15 April 2025
 author: Gabriel Viera
-preview: 
-    An article about propositions in logic.
+preview: Article preview.
 ---
 
-## Introduction
-Some content.
+Article introduction.
 
-## Definition
-Some content.
+## Section
+
+Content.
+
+## Section
+
+Content.
+
+### Sub-section
+
+Content.
+
+#### Sub-sub-section
+
+Content.

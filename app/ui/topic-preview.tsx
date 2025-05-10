@@ -1,33 +1,19 @@
-import Link from 'next/link';
-import { inter } from '@app/ui/fonts';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeSanitize from 'rehype-sanitize';
-import rehypeStringify from 'rehype-stringify';
-import { unified } from 'unified';
+import Link from "next/link";
+import { inter } from "@app/ui/fonts";
 
 export default async function TopicPreview({ topic }) {
-
-  const aboutFile = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process(topic.about);
-
-  const numberOfarticles = topic.articleSegs.length;
-
   return (
-    <div>
-      <Link href={`/${topic.topicSeg}`}>
+    <div className="mb-8">
+      <Link
+        href={`/${topic.topicId}`}
+        title={`Open '${topic.title}' topic.`}
+      >
         <h2 className={`${inter.className} antialiased text-lg font-semibold`}>
           {topic.title}
         </h2>
-        <div dangerouslySetInnerHTML={{ __html: aboutFile.value }}></div>
-        <p>
-          {`${numberOfarticles} articles`}
-        </p>
       </Link>
+      <div dangerouslySetInnerHTML={{ __html: topic.previewHtml }}></div>
+      <p className="text-gray-500 text-sm">{`(${topic.articleIds.length} articles)`}</p>
     </div>
   );
 }

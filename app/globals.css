@@ -34,3 +34,8 @@ as inline block. */
 .MathJax svg {
   display: inline-block;
 }
+
+/* Style for banner svg elements. */
+#site-header .MathJax {
+  margin: 0 0 0.5em 0;
+}

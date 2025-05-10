@@ -1,13 +1,11 @@
-import PageTitle from './page-title';
+import ArticleHeader from "@app/ui/article-header";
+import styles from "./article.module.css";
 
-export default async function Article({ article }) {
-
+export default async function Article({ topic, article }) {
   return (
-    <article>
-      <PageTitle title={article.title} />
-      <p>{article.date}</p>
-      <p>{article.author}</p>
-      <div dangerouslySetInnerHTML={{ __html: article.value }}></div>
+    <article className={styles.articles}>
+      <ArticleHeader topic={topic} article={article} />
+      <div dangerouslySetInnerHTML={{ __html: article.articleHtml }}></div>
     </article>
   );
 }

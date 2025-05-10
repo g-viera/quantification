@@ -2,18 +2,23 @@
 title: Logical Identities
 date: 12 April 2025
 author: Gabriel Viera
-preview: 
-    An article **about** logical *identities*.
+preview: Article preview.
 ---
 
-## About logical identities
+Article introduction.
 
-Some content. Let $A$ be a set, 
+## Section
 
-$$
-A \cup B = \{ x: x < 0 \}
-$$
+Content.
 
-## Definition of logical identities
+### Sub-section
 
-Some content.
+Content.
+
+### Sub-section
+
+Content.
+
+## Section
+
+Content.

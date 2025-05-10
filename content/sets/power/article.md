@@ -2,12 +2,15 @@
 title: Power Sets
 date: 2 January 2025
 author: Gabriel Viera
-preview: 
-    An article about power sets.
+preview: Article preview.
 ---
 
-## Introduction
-Some content.
+Article introduction.
 
-## What is a power set?
-Some content.
+## Section
+
+Content.
+
+## Section
+
+Content.
