@@ -8,7 +8,7 @@ export default async function TopicPreview({ topic }) {
         href={`/${topic.topicId}`}
         title={`Open '${topic.title}' topic.`}
       >
-        <h2 className={`${inter.className} antialiased text-lg font-semibold`}>
+        <h2 className={`${inter.className} antialiased text-3xl font-medium`}>
           {topic.title}
         </h2>
       </Link>

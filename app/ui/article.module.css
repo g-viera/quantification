@@ -10,6 +10,7 @@
 
 .articles h4, .articles h5, .articles h6 {
   font-size: large;
+  font-style: italic;
   font-weight: 600;
 }
 

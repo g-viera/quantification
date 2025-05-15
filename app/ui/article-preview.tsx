@@ -8,7 +8,7 @@ export default async function ArticlePreview({ article }) {
         href={`/${article.topicId}/${article.articleId}`}
         title={`Open '${article.title}' article.`}
       >
-        <h2 className={`${inter.className} antialiased text-lg font-semibold`}>
+        <h2 className={`${inter.className} antialiased text-3xl font-medium`}>
           {article.title}
         </h2>
       </Link>

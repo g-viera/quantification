@@ -1,5 +1,5 @@
 $$
-1,2,3 \dots, \; 0, \; -1,-2,-3 \dots, \; p/q, \; \sqrt{2}
+1,2,3, \dots, \; 0, \; -1,-2,-3, \dots, \; p/q, \; \sqrt{2}
 $$
 $$
 \text{ let } S \neq \emptyset, 

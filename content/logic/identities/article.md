@@ -1,5 +1,5 @@
 ---
-title: Logical Identities
+title: Identities
 date: 12 April 2025
 author: Gabriel Viera
 preview: Article preview.
